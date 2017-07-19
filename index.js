@@ -1,8 +1,8 @@
-var express = require('express')
+var express = require('express');
 
-var app = express()
+var app = express();
 
-const { spawn } = require('child_process');
+var spawn = require('child_process').spawn;
 
 app.get('/invoke', function(req, res) {
   const ls = spawn('/opt/script.py');
@@ -21,4 +21,4 @@ app.get('/invoke', function(req, res) {
   });
 })
 
-app.listen(8888)
+app.listen(8888);

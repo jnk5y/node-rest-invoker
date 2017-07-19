@@ -1,5 +1,6 @@
 FROM node:4-onbuild
 
-ONBUILD COPY ./scripts/script.py /opt/script.py
+RUN cp ./scripts/script.py /opt/script.py && \
+  chmod u+x /opt/script.py
 
 EXPOSE 8888
