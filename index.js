@@ -9,7 +9,7 @@ app.get('/invoke', function(req, res) {
 
   ls.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
-    res.json({response: `output: ${data}`})
+    res.json({response: `output: ${data}`});
   });
 
   ls.stderr.on('data', (data) => {
