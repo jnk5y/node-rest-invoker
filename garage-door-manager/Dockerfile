@@ -7,6 +7,8 @@ RUN mkdir repo && \
   cp etc/pi_garage_alert_config.py /usr/local/etc/ && \
   cp bin/pi_garage_alert.py /usr/local/sbin/ && \
   cp bin/pi_garage_trigger.py /opt/ && \
-  chmod u+x /opt/pi_garage_trigger.py /usr/local/sbin/pi_garage_alert.py /usr/local/etc/pi_garage_alert_config.py
+  chmod u+x /opt/pi_garage_trigger.py /usr/local/sbin/pi_garage_alert.py /usr/local/etc/pi_garage_alert_config.py && \
+  cd .. && \
+  rm -Rf repo/
 
 EXPOSE 8888
