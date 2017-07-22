@@ -1,0 +1,28 @@
+{
+  "name": "node-rest-invoker",
+  "version": "0.1.0",
+  "description": "A node app with a rest endpoint for invoking a script",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smrowley/node-rest-invoker"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "Shane Rowley",
+  "contributors": [
+    "John Kyrus"
+  ],
+  "license": "GPLv3"
+}
