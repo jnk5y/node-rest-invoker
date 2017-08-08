@@ -1,6 +1,9 @@
 FROM node:4-onbuild
 
-RUN cp ./scripts/script.py /opt/script.py && \
-  chmod u+x /opt/script.py
+COPY ./scripts /usr/src/app/
+COPY ./certs /usr/src/app/
+
+RUN chmod u+x /usr/src/app/*
+RUN npm install request
 
 EXPOSE 8888
