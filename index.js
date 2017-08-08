@@ -34,17 +34,9 @@ app.get('/:trigger/:action', function(req,res) {
                 res.end('Authorized');
 
                 var action = req.params.action;
-                //console.log('action ='+action);
                 var trigger = req.params.trigger;
-
-                if (trigger == 'roku') {
-                        spawn(path.join(__dirname,'scripts','roku_trigger.py'), [action]);
-                        console.log('Roku Triggered');
-                }
-                else if (trigger == 'garage') {
-                        spawn(path.join(__dirname,'scripts','pi_garage_trigger.py'), [action]);
-                        console.log('Garage Triggered');
-                }
+                
+                //ENTER YOUR LOGIC BASED ON TRIGGER AND ACTION VARIABLES
         }
         else {
                 res.setHeader('Content-Type', 'text/plain');
