@@ -5,4 +5,4 @@
 * Add scripts to scripts folder
 * To build - `docker build -t node-rest-image .`
 * To run - `docker run -d --rm -p 8888:8888 --name node-rest-container node-rest-image`
-* If everything is working you should be able to visit https://username:password@localhost.com:8888/trigger/action and you'll get an authenticated message
+* If everything is working you should be able to visit https://username:password@localhost.com:8888/trigger/action and you'll get an Authorized message. If you use the wrong username:password you will get Not Authorized!
