@@ -1,7 +1,7 @@
 {
   "name": "node-rest-invoker",
   "version": "0.1.0",
-  "description": "A node app with a rest endpoint for invoking a script",
+  "description": "A node app with a rest endpoint for invoking scripts",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -20,8 +20,8 @@
     "node",
     "express"
   ],
-  "author": "Shane Rowley",
-  "contributors": [
+  "authors": [
+    "Shane Rowley",
     "John Kyrus"
   ],
   "license": "GPLv3"
