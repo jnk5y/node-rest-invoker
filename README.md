@@ -1,6 +1,6 @@
 # node-rest-invoke
 * `git clone https://github.com/jnk5y/node-rest-invoker.git`
-* cd into node-rest-invoker and run `bash ./make-root-ca-and-certificates.sh` and this will create a certs folder with your root keys and certs - from https://git.daplie.com/Daplie/nodejs-self-signed-certificate-example
+* cd into node-rest-invoker and run `bash ./make-root-ca-and-certificates.sh localhost` and this will create a certs folder with your root keys and certs - from https://git.daplie.com/Daplie/nodejs-self-signed-certificate-example
 * Update index.js username and password to whatever you want and modify the routes to call the scripts you want to call
 * Add scripts to scripts folder
 * To build - `docker build -t node-rest-image .`
