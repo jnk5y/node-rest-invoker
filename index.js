@@ -14,8 +14,8 @@ var options = {
 	cert: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'fullchain.pem'))
 };
 
-var expectedUsername = 'johnkyrus';
-var expectedPassword = 'CkOUdM7r1O';
+var expectedUsername = '';
+var expectedPassword = '';
 
 app.get('/:trigger/:action', function(req,res) {
 	var header = req.headers['authorization'] || '',
