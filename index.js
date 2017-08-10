@@ -14,30 +14,30 @@ var options = {
 	cert: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'fullchain.pem'))
 };
 
-var expectedUsername = '';
-var expectedPassword = '';
+var expectedAuth = null;
+var file = path.join(__dirname,'pass.txt');
+fs.readFile(file, function(err,data) {
+        if(err == null) { expectedAuth = data.toString().trim(); }
+        else { throw "Password file not found."; }
+});
 
-app.get('/:trigger/:action', function(req,res) {
-	var header = req.headers['authorization'] || '',
-		token = header.split(/\s+/).pop() || '',
-		auth = new Buffer(token, 'base64').toString(),
-		parts = auth.split(/:/),
-		username = parts[0],
-		password = parts[1];
+app.post('/:auth/:trigger/:action', function(req,res) {
+	var auth = req.params.auth;
+        var action = req.params.action;
+        var trigger = req.params.trigger;
 
-	if(username == expectedUsername && password == expectedPassword) {
+        if(auth == expectedAuth && expectedAuth != null) {
 
-		res.setHeader('Content-Type', 'text/plain');
-		res.end('authorized');
-		
-		var action = req.params.action;
-		var trigger = req.params.trigger;
-		var file = path.join(__dirname,'scripts', trigger +'_trigger.py');//filename);
-		
-		fs.stat(file, function(err,stat) {
-			if(err == null) { spawn(file, [action]); }
-			else { console.log('trigger not found'); }
-		});
+                res.setHeader('Content-Type', 'text/plain');
+                res.end('authorized');
+                console.log('authorized');
+
+                file = path.join(__dirname,'scripts', trigger +'_trigger.py');
+
+                fs.stat(file, function(err,stat) {
+                        if(err == null) { spawn(file, [action]); }
+                        else { console.log('trigger not found'); }
+                });
 	}
 	else { 
 		res.setHeader('Content-Type', 'text/plain');
