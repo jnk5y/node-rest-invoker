@@ -32,7 +32,7 @@ app.get('/:trigger/:action', function(req,res) {
 		
 		var action = req.params.action;
 		var trigger = req.params.trigger;
-		var file = path.join(__dirname,'scripts', trigger +'_trigger.py');//filename);
+		var file = path.join(__dirname,'scripts', trigger +'_trigger.py');
 		
 		fs.stat(file, function(err,stat) {
 			if(err == null) { spawn(file, [action]); }
