@@ -29,7 +29,7 @@ app.get('/:clientKey/:trigger/:action', function(req,res) {
                 res.end('Authorized');
                 console.log('Authorized');
 
-                var file = path.join(__dirname,'scripts', trigger +'_trigger.py');
+                var file = path.join(__dirname,'triggers', trigger +'_trigger.py');
 
                 fs.stat(file, function(err,stat) {
                         if(err == null) { spawn(file, [action]); }
