@@ -29,11 +29,11 @@ app.get('/:clientKey/:trigger/:action', function(req,res) {
                 res.end('Authorized');
                 console.log('Authorized');
 
-                var file = path.join(__dirname,'triggers', trigger +'_trigger.py');
+                var file = path.join(__dirname,'node-rest-scripts', trigger +'_trigger.py');
 
                 fs.stat(file, function(err,stat) {
                         if(err == null) { spawn(file, [action]); }
-                        else { console.log('Trigger script not found. Did you remember to attach your trigger volume to the docker run command with -v /your/triggers/folder:/usr/src/app/triggers:Z'); }
+                        else { console.log('Trigger script not found. Did you remember to attach your trigger volume to the docker run command with -v /your/triggers/folder:/usr/src/app/node-rest-scripts:Z'); }
                 });
 	}
 	else { 
