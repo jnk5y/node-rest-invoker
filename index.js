@@ -33,7 +33,7 @@ app.get('/:clientKey/:trigger/:action', function(req,res) {
 
                 fs.stat(file, function(err,stat) {
                         if(err == null) { spawn(file, [action]); }
-                        else { console.log('Trigger script not found'); }
+                        else { console.log('Trigger script not found. Did you remember to attach your trigger volume to the docker run command with -v /your/triggers/folder:/usr/src/app/triggers:Z'); }
                 });
 	}
 	else { 
