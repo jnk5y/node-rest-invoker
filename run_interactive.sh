@@ -1,0 +1,1 @@
+docker run -e SERVER_KEY=9f735e0df9a1ddc702bf0a1a7b83033f9f7153a00c29de82cedadc9957289b05 -it --rm -p 8888:8888 -v /home/john/code/node-rest-scripts:/usr/src/app/node-rest-scripts:Z --name node-rest-container node-rest-image
