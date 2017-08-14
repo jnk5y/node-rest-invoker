@@ -7,3 +7,6 @@
 * To run - `docker run -e SERVER_KEY=YOURKEYFROMABOVE -it --rm -p 8888:8888 -v /path/to/your/triggers/folder:/usr/src/app/node-rest-scripts:Z --name node-rest-container node-rest-image`
 * If everything is working you should be able to visit https://username:password@localhost.com:8888/trigger/action and you'll get an Authorized message. If you use the wrong username:password you will get Not Authorized!
 * Now you can go to IFTTT maker platform https://platform.ifttt.com/maker/ and create an applet that uses a webhook to make the GET call to your REST server. The front end can be your choice (Google Assistant, Amazon Echo...) to link to the webhook.
+
+Thanks to:
+Shane Rowley - https://github.com/smrowley
