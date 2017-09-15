@@ -15,15 +15,23 @@ var options = {
 	cert: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'fullchain.pem'))
 };
 
-app.get('/:clientKey/:trigger/:action', function(req,res) {
-	var clientKey = req.params.clientKey;
+app.get('/:trigger/:action', function(req,res) {
         var action = req.params.action;
         var trigger = req.params.trigger;
-	var serverKey = process.env.SERVER_KEY;
-	
-	if(serverKey == null) { throw "SERVER_KEY env variable not set."; }
+        const auth = {login: process.env.USERNAME, password: process.env.PASSWORD }
 
-        if(clientKey == serverKey) {
+        var newauth = (req.headers.authorization || '').split(' ')[1] || '';
+        newauth = new Buffer(newauth, 'base64').toString().split(':') || '';
+        const login = newauth[0];
+        const password = newauth[1];
+
+        if (!login || !password || !auth.login || !auth.password || login !== auth.login || password !== auth.password) {
+                res.status(401).send('Not Authorized.');
+                console.log('Not Authorized');
+                return;
+        }
+        else if (!auth.login || !auth.password) { throw "USERNAME and/or PASSWORD env variables not set."; }
+        else {
 		var dataString = '';
                 res.setHeader('Content-Type', 'text/plain');
                 console.log('Authorized');
@@ -46,12 +54,6 @@ app.get('/:clientKey/:trigger/:action', function(req,res) {
                         else { console.log('Trigger script not found. Did you remember to attach your trigger volume to the docker run command with -v /your/triggers/folder:/usr/src/app/node-rest-scripts:Z'); }
                 });
 	}
-	else { 
-		res.setHeader('Content-Type', 'text/plain');
-		res.end('Not Authorized!');
-		console.log('Not Authorized!');
-	}
-
 })
 	        
 server = https.createServer(options, app).listen(port, function() {
