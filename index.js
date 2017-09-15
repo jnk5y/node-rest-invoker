@@ -25,7 +25,7 @@ app.get('/:trigger/:action', function(req,res) {
         const login = newauth[0];
         const password = newauth[1];
 
-        if (!login || !password || !auth.login || !auth.password || login !== auth.login || password !== auth.password) {
+        if (!login || !password || login !== auth.login || password !== auth.password) {
                 res.status(401).send('Not Authorized.');
                 console.log('Not Authorized');
                 return;
