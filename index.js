@@ -11,8 +11,8 @@ var https = require('https');
 var port = 8888;
 var server;
 var options = {
-	key: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'privkey.pem')),	
-	cert: fs.readFileSync(path.join(__dirname, 'certs', 'server', 'fullchain.pem'))
+	key: fs.readFileSync(path.join(__dirname, 'certs', 'privkey.pem')),	
+	cert: fs.readFileSync(path.join(__dirname, 'certs', 'fullchain.pem'))
 };
 
 app.get('/:trigger/:action', function(req,res) {
