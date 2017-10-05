@@ -1,6 +1,7 @@
 # node-rest-invoke
 * `git clone https://github.com/jnk5y/node-rest-invoker.git`
-* Add your ssl certificates in the certs folder
+* Add your ssl certificates in the certs folder or use -v /etc/letsencrypt:/usr/src/app/certs:Z on your docker run command
+* Update the index.js file to point to your certs
 * Add trigger scripts to the node-rest-scripts folder or use -v command in the docker run call below to use a folder from outside of your docker container. This is helpful because you can add/modify scripts without having to restart your REST server.
 * To build - `docker build -t node-rest-image .`
 * To run - `docker run -e USERNAME=YOURUSERNAME -e PASSWORD=YOURPASSWORD -it --rm -p 8888:8888 -v /path/to/your/triggers/folder:/usr/src/app/node-rest-scripts:Z --name node-rest-container node-rest-image`
